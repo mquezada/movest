@@ -63,6 +63,9 @@ class Formato(models.Model):
 class Fuente(models.Model):
     nombre = models.CharField(max_length=64, unique=True)
     url = models.CharField(max_length=64, unique=True)
+
+    def __unicode__(self):
+        return self.nombre
     
 class Evento(models.Model):
     nombre = models.CharField(max_length=64)
@@ -85,6 +88,7 @@ class Recurso(models.Model):
     formato = models.ForeignKey(Formato, null=True)
     lugar = models.ForeignKey(Lugar, null=True)
     evento = models.ForeignKey(Evento, null=True)
+    fuente = models.ForeignKey(Fuente, null=True)
 
     def __unicode__(self):
         return self.url
