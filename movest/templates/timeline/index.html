@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Timeline</title>
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}file">
+</head>
+<body>
+
+{% if fechas_list %}
+    <ul>
+    {% for fecha in fechas_list %}
+    	<li><h1>{{ fecha.fecha }}</h1></li>  
+    	<ul>
+    	{% for res in res_list.pop %}
+    		<li>{{ res.titulo }} - <a href="{{ res.url }}">{{ res.url }}</a></li>
+    	{% endfor %}
+    	</ul>  	
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay links.</p>
+{% endif %}
+</body>
+</html>
