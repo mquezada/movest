@@ -7,5 +7,6 @@ admin.autodiscover()
 urlpatterns = patterns('timeline.views',
     # timeline
     url(r'^$', 'index'),
-    url(r'^resources/(?P<res_id>\d+)/$', 'resource'),
+    url(r'^timeline/', 'timeline'),
+    url(r'^data.json', 'get_data'),   
 )

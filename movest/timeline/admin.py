@@ -1,4 +1,4 @@
-from timeline.models import Recurso
+from timeline.models import *
 from django.contrib import admin
 
-admin.site.register(Recurso)
+admin.site.register(Fuente)
