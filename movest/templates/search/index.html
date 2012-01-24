@@ -1,0 +1,100 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css">
+  <script src="{{ MEDIA_URL }}js/libs/modernizr-2.0.6.min.js"></script>
+</head>
+<body>
+  <div id="header-container">
+    <header class="wrapper clearfix">
+      <h1 id="title">Movest 2011</h1>
+      <nav>
+	<ul>
+	    <li><a href="/timeline">Timeline</a></li>
+	      <li><a href="/events">Eventos</a></li>
+	        <li><a href="/search">Buscar</a></li>
+		  </ul>
+	</nav>
+      </header>
+  </div>
+  <div id="main-container">
+    <div id="main" class="wrapper clearfix">
+      <article>
+	<header>
+	  <h1>Buscar</h1>
+	</header>
+	<section>
+	  <form method="get" action="/search">
+	    <p>
+	      <label for="search-title">T&iacute;tulo: &nbsp;</label>
+	      <input type="text" name="title" id="search-title" />
+	    </p>
+	    <p>
+	      <label for="search-from">Desde: &nbsp;</label>
+	      <input type="text" name="from" id="search-from" />	      
+	    </p>
+	    <p>
+	      <label for="search-to">Hasta: &nbsp;</label>
+	      <input type="text" name="to" id="search-to" />
+	    </p>
+	    <p>
+	      <label for="search-src">Fuente: &nbsp;</label>	      
+	      <select name="src" id="search-src">
+		<option value="" selected="true">-</option>
+		{% if fuentes %}
+		{% for f in fuentes %}
+		<option value="{{ f.nombre }}">{{ f.nombre }}</option>
+		{% endfor %}
+		{% endif %}
+	      </select>
+	    </p>
+	    <p><input type="submit" value="Buscar" /></p>
+	  </form>
+	</section>
+	{% if res %}
+	<section>
+	  <header>Encontrados {{ tot }} resultados</header>
+	  <ul>
+	  {% for r in res %}
+	  <li><a href="{{ r.url }}">{{ r.fecha_suceso }} - {{ r.titulo }}</a></li>
+	  {% endfor %}
+	  </ul>
+	</section>
+	{% endif %}	
+	<footer>
+	</footer>
+      </article>      
+      
+    </div> <!-- #main -->
+  </div> <!-- #main-container -->
+
+  <div id="footer-container">
+    <footer class="wrapper">
+      <h3>footer</h3>
+    </footer>
+  </div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{ MEDIA_URL }}js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+<script src="{{ MEDIA_URL }}js/script.js"></script>
+<script>
+  var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+<!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+</body>
+</html>
